@@ -1,12 +1,12 @@
+const Discord = require("discord.js");
 
- const Discord = require("discord.js");
-module.exports.run = async (client, message, prefix) => {  
+exports.run = (client, message, prefix) => {
   const args = message.content.slice(prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
 message.delete(500)
 
-     if (message.author.id !== ('424916247696900135')) return message.channel.send("**You Can\'t Change listening BOT **");
+     if (message.author.id !== ('424916247696900135')) return message.channel.send("**Sorry, the `setplaying` command can only be executed by the Developer.**");
      const status = args.join(' ');
      if (status.length === 0) {
        const embed = new Discord.RichEmbed()
@@ -17,7 +17,7 @@ message.delete(500)
   }
   
     else if (status.length !== 0) {
-    client.user.setActivity(`${status}`, {  type: "Listening"});
+    client.user.setActivity(`${status}`, {  type: "Playing"});
     const embed = new Discord.RichEmbed()
       .setColor("#7289DA")
       .setDescription(`${message.author.tag} You Sucessfully Changed Watching » **${status}** !`);
